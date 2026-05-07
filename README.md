@@ -50,12 +50,6 @@ Requires Python 3.10+ and a local Tesseract binary (`brew install tesseract` on 
 pip install -r requirements.txt
 ```
 
-Python deps: `numpy`, `Pillow`, `pytesseract`, `matplotlib`, `torch`, `tqdm`.
-
-PyTorch runs on CUDA when available, falls back to Apple MPS on macOS (Apple Silicon), and to CPU otherwise. The training script auto-detects the best device; override with `--device cuda|mps|cpu`.
-
-> **NumPy / torch ABI note.** If `pip install` leaves you with `numpy>=2` but a torch wheel compiled against `numpy<2`, you'll see `RuntimeError: Numpy is not available` inside `torch.from_numpy`. The dataset and inference helpers have a fallback for this, but it's slower. To fix it permanently either `pip install "numpy<2"` or `pip install --upgrade torch`.
-
 ## Datasets
 
 All three folders share the same triplet structure (blur image, PSF kernel, ground-truth orig), but they differ in purpose:
